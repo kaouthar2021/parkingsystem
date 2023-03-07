@@ -1,6 +1,7 @@
 package com.parkit.parkingsystem.model;
 
-import java.util.Calendar;
+import com.parkit.parkingsystem.dao.TicketDAO;
+
 import java.util.Date;
 
 public class Ticket {
@@ -10,6 +11,8 @@ public class Ticket {
     private double price;
     private Date inTime;
     private Date outTime;
+   private int recurrentNumberUser;
+
 
     public int getId() {
         return id;
@@ -58,4 +61,6 @@ public class Ticket {
     public void setOutTime(Date outTime) {
         this.outTime = outTime;
     }
+
+
 }

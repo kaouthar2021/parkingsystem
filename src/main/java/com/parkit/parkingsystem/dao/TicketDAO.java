@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 
+import static junit.runner.Version.id;
+
 public class TicketDAO {
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
@@ -86,6 +88,28 @@ public class TicketDAO {
             dataBaseConfig.closeConnection(con);
         }
         return false;
+    }
+    public int recurrentNumberUser(String vehicleRegNumber){
+        Connection con = null;
+        int recurrentNumberUser =0;
+        try {
+            con = dataBaseConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(DBConstants.RETURNING_CUSTOMER);
+            ps.setString(1,vehicleRegNumber);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return recurrentNumberUser= rs.getInt(1);
+
+
+            }
+
+
+        }catch (Exception ex){
+            logger.error("Erreur fetching number of recurrentCustomer",ex);
+        }finally {
+            dataBaseConfig.closeConnection(con);
+        }
+        return recurrentNumberUser;
     }
 
 }
