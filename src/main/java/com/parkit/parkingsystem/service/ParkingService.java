@@ -104,7 +104,7 @@ public class ParkingService {
             Date outTime = new Date();
             ticket.setOutTime(outTime);
             int ticketNumber=ticketDAO.recurrentNumberUser(vehicleRegNumber);
-            fareCalculatorService.calculateFare(ticket,ticketNumber);//ajouter un deuxiéme paramétre
+            fareCalculatorService.calculateFare(ticket,ticketNumber);//ajouter un deuxiéme paramétre pour utilisateur reccurent
             if(ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
                 parkingSpot.setAvailable(true);

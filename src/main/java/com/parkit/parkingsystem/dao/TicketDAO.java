@@ -19,10 +19,10 @@ public class TicketDAO {
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
 
-    public DataBaseConfig dataBaseConfig = new DataBaseConfig();
+    public static  DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
 
-    public boolean saveTicket(Ticket ticket){
+    public static boolean saveTicket(Ticket ticket){
         Connection con = null;
         try {
             con = dataBaseConfig.getConnection();
@@ -89,6 +89,7 @@ public class TicketDAO {
         }
         return false;
     }
+    //chercher le nombre d'occurences pour un utilisateur
     public int recurrentNumberUser(String vehicleRegNumber){
         Connection con = null;
         int recurrentNumberUser =0;

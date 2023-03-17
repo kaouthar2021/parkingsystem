@@ -28,9 +28,7 @@ import static org.mockito.Mockito.when;
 public class ParkingSpotDAOTest {
     private static DataBaseTestConfig  dataBaseTestConfig = new DataBaseTestConfig();
 
-
     private static ParkingSpotDAO parkingSpotDAO;
-    private static ParkingSpot parkingSpot;
 
 
 

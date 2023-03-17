@@ -11,7 +11,6 @@ public class Ticket {
     private double price;
     private Date inTime;
     private Date outTime;
-   private int recurrentNumberUser;
 
 
     public int getId() {

@@ -20,10 +20,11 @@ public class ParkingSpotDAO {
     public int getNextAvailableSlot(ParkingType parkingType){
         Connection con = null;
         int result=-1;
+
         try {
             con = dataBaseConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(DBConstants.GET_NEXT_PARKING_SPOT);
-            ps.setString(1, parkingType.toString());
+            ps.setString(1, parkingType.name());
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 result = rs.getInt(1);;
@@ -56,6 +57,7 @@ public class ParkingSpotDAO {
             dataBaseConfig.closeConnection(con);
         }
     }
+    //chercher le parking en utilisant l'id
     public ParkingSpot findParkingById(int id ){
         Connection con =null;
         try{
