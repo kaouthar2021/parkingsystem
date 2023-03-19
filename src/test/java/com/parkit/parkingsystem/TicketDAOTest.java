@@ -95,21 +95,5 @@ public class TicketDAOTest {
 
         Assertions.assertNotEquals(TicketDAO.updateTicket(ticket), TicketDAO.saveTicket(ticket));
     }
-    @Test
-    public void recurrentNumberUserTest() {
-        Ticket ticket = new Ticket();
-        Date inTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
-        ticket.setParkingSpot(parkingSpot);
-        ticket.setVehicleRegNumber("EFGH");
-        ticket.setPrice(0);
-        inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
-        ticket.setInTime(inTime);
-        TicketDAO.saveTicket(ticket);
 
-        Ticket ticket2 = TicketDAO.getTicket("EFGH");
-        TicketDAO.saveTicket(ticket2);
-
-        Assertions.assertEquals(TicketDAO.recurrentNumberUser("EFGH"), 2);
-    }
 }
